@@ -10,12 +10,12 @@ class Snake:
     def __init__(self) -> None:
         self.segments = []
         self.length = len(self.segments)
-        self.create_snake()
+        self.create()
         self.head = self.segments[0]
         
 
 
-    def create_snake(self):
+    def create(self):
         for position in STARTING_POSITIONS:
             new_segment = Turtle(shape = "square")
             new_segment.up()
@@ -50,7 +50,7 @@ class Snake:
         if self.head.heading() == RIGHT or self.head.heading() == LEFT:
             self.head.setheading(DOWN)
 
-    def snake_eats_food(self):
+    def eats(self):
         
         new_segment = new_segment = Turtle(shape = "square")
         new_xcor = self.segments[-1].xcor()
@@ -66,4 +66,10 @@ class Snake:
         elif self.head.heading() == RIGHT:
             new_segment.goto(new_xcor -20,new_ycor)
         self.segments.append(new_segment)
+
+    def collision(self):
+
+
+    
+
 

@@ -5,8 +5,11 @@ from food import Food
 from score import Score
 
 GAME_IS_ON = True
+NEGATIVE_BORDER = -395
+POSITIVE_BORDER = 395
+
 screen = Screen()
-screen.setup(width = 800, height = 800)
+screen.setup(width = 800, height = 790)
 screen.bgcolor("black")
 screen.title("SNAKE GAME")
 screen.tracer(0)
@@ -30,9 +33,14 @@ while GAME_IS_ON:
     
 #DETECT COLLISION WITH FOOD
     if snake.head.distance(food) < 20:
-        food.eaten_food()
-        snake.snake_eats_food()
-        score.increase_score()
+        food.eaten()
+        snake.eats()
+        score.increase()
+    
+    if snake.head.xcor() < NEGATIVE_BORDER or snake.head.xcor() > POSITIVE_BORDER or snake.head.ycor() < NEGATIVE_BORDER or snake.head.ycor() > POSITIVE_BORDER:
+        GAME_IS_ON = False
+        score.game_over()
+
 
 
 

@@ -1,5 +1,5 @@
 ALIGNMENT = "center"
-FONT = ('Calibri', 14, "bold")
+FONT = ('Arial', 12, "normal")
 
 from turtle import Turtle
 
@@ -13,10 +13,14 @@ class Score(Turtle):
         self.goto(x = 0, y = 360)
         self.update_score()
     
-    def increase_score(self):
+    def increase(self):
         self.score += 1
         self.clear()
         self.update_score()
 
-    def update_score(self):
+    def update(self):
         self.write(arg =f"Score: {self.score}", align=ALIGNMENT, font=FONT)
+
+    def game_over(self):
+        self.goto(x = 0, y = 0)
+        self.write(arg="Game Over.", align = ALIGNMENT, font = FONT)
