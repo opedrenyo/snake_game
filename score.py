@@ -11,12 +11,12 @@ class Score(Turtle):
         self.up()
         self.color("white")
         self.goto(x = 0, y = 360)
-        self.update_score()
+        self.update()
     
     def increase(self):
         self.score += 1
         self.clear()
-        self.update_score()
+        self.update()
 
     def update(self):
         self.write(arg =f"Score: {self.score}", align=ALIGNMENT, font=FONT)

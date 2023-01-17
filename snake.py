@@ -51,7 +51,6 @@ class Snake:
             self.head.setheading(DOWN)
 
     def eats(self):
-        
         new_segment = new_segment = Turtle(shape = "square")
         new_xcor = self.segments[-1].xcor()
         new_ycor = self.segments[-1].ycor()
@@ -68,6 +67,11 @@ class Snake:
         self.segments.append(new_segment)
 
     def collision(self):
+        tail = self.segments[1:]
+        for segment in tail:
+            if self.head.distance(segment.position()) < 15:
+                return True
+
 
 
     

@@ -27,7 +27,7 @@ screen.onkey(key= "Left", fun = snake.left)
 
 while GAME_IS_ON:
     screen.update()
-    time.sleep(0.09)
+    time.sleep(0.08)
     snake.move()
     
     
@@ -41,9 +41,9 @@ while GAME_IS_ON:
         GAME_IS_ON = False
         score.game_over()
 
+    if snake.collision():
+        GAME_IS_ON = False
+        score.game_over()
 
-
-
-        
 
 screen.exitonclick()
