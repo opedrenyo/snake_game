@@ -26,6 +26,12 @@ while GAME_IS_ON:
     snake.move()
     
     
+#DETECT COLLISION WITH FOOD
+    if snake.head.distance(food) < 20:
+        food.eaten_food()
+        snake.snake_eats_food()
+
+
 
         
 
