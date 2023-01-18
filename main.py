@@ -7,6 +7,7 @@ from score import Score
 GAME_IS_ON = True
 NEGATIVE_BORDER = -395
 POSITIVE_BORDER = 395
+snake_speed = 0.08
 
 screen = Screen()
 screen.setup(width = 800, height = 790)
@@ -27,7 +28,7 @@ screen.onkey(key= "Left", fun = snake.left)
 
 while GAME_IS_ON:
     screen.update()
-    time.sleep(0.08)
+    time.sleep(snake_speed)
     snake.move()
     
     
@@ -36,14 +37,15 @@ while GAME_IS_ON:
         food.eaten()
         snake.eats()
         score.increase()
+        snake_speed *= 0.9 
     
     if snake.head.xcor() < NEGATIVE_BORDER or snake.head.xcor() > POSITIVE_BORDER or snake.head.ycor() < NEGATIVE_BORDER or snake.head.ycor() > POSITIVE_BORDER:
-        GAME_IS_ON = False
-        score.game_over()
+        score.reset()
+        snake.reset()
 
     if snake.collision():
-        GAME_IS_ON = False
-        score.game_over()
+        score.reset()
+        snake.reset()
 
 
 screen.exitonclick()
